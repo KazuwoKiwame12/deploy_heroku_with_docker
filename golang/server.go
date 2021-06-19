@@ -11,5 +11,5 @@ func main() {
 	e.GET("/", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"word": "Hello"})
 	})
-	e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":8080"))
 }
