@@ -2,7 +2,10 @@ version: "3"
 services:
     web:
         container_name: deploy_heroku_with_docker
-        build: ./golang
+        build:
+            context: ./golang
+            target: DEV
+        image: dev
         ports:
             - 8080:8080
         volumes:
