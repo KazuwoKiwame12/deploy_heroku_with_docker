@@ -14,15 +14,15 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.16
-      - name: check out
-        uses: actions/checkout@v2
-      - name: Use Cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
+      # - name: check out
+      #   uses: actions/checkout@v2
+      # - name: Use Cache
+      #   uses: actions/cache@v2.1.6
+      #   with:
+      #     path: ~/go/pkg/mod
+      #     key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-go-
 
   test:
     needs: setup
@@ -30,9 +30,21 @@ jobs:
     steps:
         - name: check out
           uses: actions/checkout@v2
+        - name: check files
+          run: ls -a
         - name: build test
           run: go build ./...
         - name: function test
           run: go test ./... -v
 
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out
+        uses: actions/checkout@v2
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: latest
   #deploy:
