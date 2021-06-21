@@ -35,18 +35,18 @@ jobs:
         - name: build test
           run: cd golang && go build ./...
         - name: function test
-          run: cd golang && go test ./... -v
+          run: cd golang/server && go test ./... -v
 
-  lint:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: check out
-        uses: actions/checkout@v2
-      - name: cd commands
-        run: cd golang
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v2
-        with:
-          version: latest
+  # lint:
+  #   needs: setup
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: check out
+  #       uses: actions/checkout@v2
+  #     - name: cd commands
+  #       run: cd golang
+  #     - name: golangci-lint
+  #       uses: golangci/golangci-lint-action@v2
+  #       with:
+  #         version: latest
   #deploy:
