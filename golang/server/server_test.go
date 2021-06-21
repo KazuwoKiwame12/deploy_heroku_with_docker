@@ -18,7 +18,7 @@ func TestHandler(t *testing.T) {
 	if rec.Code != http.StatusOK {
 		t.Errorf("error: %+v\n", rec)
 	}
-	if rec.Body.String() != "failed" {
+	if rec.Body.String() != server.ExportResponseMsg {
 		t.Errorf("expected: %+v, result: %+v\n", server.ExportResponseMsg, rec.Body.String())
 	}
 }
