@@ -33,9 +33,9 @@ jobs:
         - name: check files
           run: ls -a
         - name: build test
-          run: go build ./...
+          run: cd golang && go build ./...
         - name: function test
-          run: go test ./... -v
+          run: cd golang && go test ./... -v
 
   lint:
     needs: setup
@@ -43,6 +43,8 @@ jobs:
     steps:
       - name: check out
         uses: actions/checkout@v2
+      - name: cd commands
+        run: cd golang
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
         with:
