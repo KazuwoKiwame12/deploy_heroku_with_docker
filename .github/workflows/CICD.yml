@@ -30,8 +30,6 @@ jobs:
     steps:
         - name: check out
           uses: actions/checkout@v2
-        - name: check files
-          run: ls -a
         - name: build test
           run: cd golang && go build ./...
         - name: function test
