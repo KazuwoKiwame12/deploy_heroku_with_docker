@@ -6,7 +6,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-var responseMsg = "Hello"
+var responseMsg = "Hello World"
 
 func NewRouter() *echo.Echo {
 	handler := func(c echo.Context) error {
